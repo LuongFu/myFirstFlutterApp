@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/widget_tree.dart';
+import 'package:flutter_app/widgets/navbar_widget.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-//stateless
-//material app
-//scaffold
+//Material App {Stateful}
+//Scaffold
+//App title
+// Bottom navigation bar setState()
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +30,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: Text('Flutter Map'), centerTitle: true),
-        floatingActionButton: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
-            SizedBox(height: 10),
-            FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
-          ],
-        ),
-        bottomNavigationBar: NavigationBar(
-          destinations: [
-            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-          onDestinationSelected: (int value) => {print(value)},
-          selectedIndex: 1,
-        ),
-      ),
+      home: WidgetTree(),
     );
   }
 }
